@@ -85,24 +85,26 @@ let current = 1;
 function generateQuestionTemplate(currentQuest) {
   return `        
   <section id="questionForm" role="region">
-    <p id="questionText">${currentQuest.question}</p>
+
     <form>
       <fieldset id="js-answer-choices">
+      <legend>Question ${currentQuest.number}</legend>
+      <h1 id="questionText">${currentQuest.question}</h1>
         <div class="questHolder">
           <input id="ans1" class="answers" type="radio" name="answerChoice" required>
-          <label for="ans1">${currentQuest.answers[0]}</label> 
+          <label for="ans1" id="answer1">${currentQuest.answers[0]}</label> 
         </div>
         <div class="questHolder">
           <input id="ans2" class="answers" type="radio" name="answerChoice">
-          <label for="ans2">${currentQuest.answers[1]}</label> 
+          <label for="ans2" id="answer2">${currentQuest.answers[1]}</label> 
         </div>
         <div class="questHolder">
           <input id="ans3" class="answers" type="radio" name="answerChoice">
-          <label for="ans3">${currentQuest.answers[2]}</label> 
+          <label for="ans3" id="answer3">${currentQuest.answers[2]}</label> 
         </div>
         <div class="questHolder">
           <input id="ans4" class="answers" type="radio" name="answerChoice">
-          <label for="ans4">${currentQuest.answers[3]}</label> 
+          <label for="ans4" id="answer4">${currentQuest.answers[3]}</label> 
         </div>            
       </fieldset>
       <button type="submit" id="submitAnswer">CONFIRM</button>   
@@ -120,7 +122,7 @@ function generateQuestionTemplate(currentQuest) {
 function rightFeedback(currentQuest) {
   return `
   <section class="feedbackBox" role="region">
-      <h2>Correct</h2>
+      <h1>Correct</h1>
       <img src='https://1.bp.blogspot.com/-Rqqj-LTH5B0/VekypBgRdlI/AAAAAAAATs4/i1726H4l7jA/s1600/big-boss-thumbs-up.gif' alt='An animated gif of Big Boss on a computer giving a thumbs up'>
     <button id="js-continue">Continue</button>
   </section>
@@ -137,7 +139,7 @@ function rightFeedback(currentQuest) {
 function wrongFeedback(currentQuest) {
   return `
   <section class="feedbackBox" role="region">
-    <h2>Incorrect</h2>
+    <h1>Incorrect</h1>
     <p class="feedbackDetail" name="wrongFeedbackDetail">The correct answer was</p>
     <div class="correctAnswer">${currentQuest.right}</div>
     <img src='https://media.giphy.com/media/W1gr7wLIQSecg/giphy.gif' alt='An animated gif of the game over screen from Metal Gear Solid'>
@@ -156,7 +158,7 @@ function wrongFeedback(currentQuest) {
 function resultsPage() {
   return `
   <section class="results" role="region">
-    <h2>RESULTS</h2>
+    <h1>RESULTS</h1>
     <div id="resultDetails">
       <span id="scorePercentage">SCORE ${displayScorePercentage()}%</span>
       <br>
